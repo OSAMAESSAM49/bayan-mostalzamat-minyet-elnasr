@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="بيان المستلزمات">
 <title>بيان المستلزمات — الوحدات الصحية بمنية النصر</title>
-<script id="cfg" type="application/json">{"v":1,"url":"https://docs.google.com/forms/d/e/1FAIpQLSdRm5aQrtVjapprGvnlpVqEVfbOhj5h3HevY5BFlpcG-T_raA/formResponse","pages":5,"u":"289462955","p":"1589024223","b":["1582351742","29523006","1531623487","874517015","1752074575","582335066","1664647498","1942542187","1752051499","1621575673","1822146725","883677482","244090025","765700233","2050095222","325555068","1567105460","1685367813","1176357774","1925979709","52701916","1183488198","1127894387","1575249276","1106835815","1355108914","851451873","1095048670","44230574","1600543738","719605739","502876626","1041181688","2128499705","1189972299","1230279227","666362364","235080463","1897182654"],"n":["836064521","880758536","810080082","553448482","408369236","757402504","781387648","981064999","652243730","536829859","1082141768","1630627887","2059296783","381062799","631815876","391058880","644176850","1567090440","616793330","1461386878","124585898","108017115","378287841","421172166","1370599659","2019075832","1146384518","897241876","2054981959","1785677327","252172193","6409769","1731677052","1533492365","2067060667","667168969","641292269","342431751","767698415"]}</script>
+<script id="cfg" type="application/json">{"v":1,"url":"https://docs.google.com/forms/d/e/1FAIpQLSdRm5aQrtVjapprGvnlpVqEVfbOhj5h3HevY5BFlpcG-T_raA/formResponse","pages":5,"u":"289462955","p":"1589024223","x":"353800412","b":["1582351742","29523006","1531623487","874517015","1752074575","582335066","1664647498","1942542187","1752051499","1621575673","1822146725","883677482","244090025","765700233","2050095222","325555068","1567105460","1685367813","1176357774","1925979709","52701916","1183488198","1127894387","1575249276","1106835815","1355108914","851451873","1095048670","44230574","1600543738","719605739","502876626","1041181688","2128499705","1189972299","1230279227","666362364","235080463","1897182654"],"n":["836064521","880758536","810080082","553448482","408369236","757402504","781387648","981064999","652243730","536829859","1082141768","1630627887","2059296783","381062799","631815876","391058880","644176850","1567090440","616793330","1461386878","124585898","108017115","378287841","421172166","1370599659","2019075832","1146384518","897241876","2054981959","1785677327","252172193","6409769","1731677052","1533492365","2067060667","667168969","641292269","342431751","767698415"]}</script>
 <style>
   :root{
     --bg:#0a0a0b; --card:#141416; --card2:#1b1b1f; --line:#2a2a30;
@@ -45,10 +45,6 @@
 
   main{max-width:760px;margin:0 auto;padding:16px}
 
-  .banner{display:none;margin-bottom:14px;padding:12px 14px;border-radius:14px;border:1px dashed var(--pink);
-    background:rgba(255,79,163,.08);font-size:14px}
-  .banner.show{display:flex;align-items:center;justify-content:space-between;gap:10px}
-  .banner button{color:var(--pink);font-weight:800;white-space:nowrap}
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
 
@@ -58,6 +54,11 @@
   .field input{width:100%;height:48px;padding:0 14px;border-radius:12px;background:var(--bg);border:1.5px solid var(--line);outline:none;transition:.15s}
   .field input:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(198,255,61,.15)}
   .field.req span::after{content:" *";color:var(--pink)}
+  .notes{margin-top:14px}
+  .notes textarea{width:100%;min-height:120px;padding:12px 14px;border-radius:12px;background:var(--bg);border:1.5px solid var(--line);outline:none;resize:vertical;line-height:1.7;transition:.15s}
+  .notes textarea:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(198,255,61,.15)}
+  .notes textarea::placeholder{color:#55555e}
+  .rrow.note{border-right-color:var(--text);flex-direction:column;gap:4px;white-space:pre-wrap}
   @media (max-width:520px){.unit{grid-template-columns:1fr}}
 
   /* ---------- stats ---------- */
@@ -181,21 +182,13 @@
   </div>
   <div class="top-actions">
     <span id="net" class="pill">أونلاين</span>
-    <button id="gear" class="icon-btn" aria-label="الإعدادات">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-    </button>
   </div>
 </header>
 
 <main>
-  <div id="banner" class="banner">
-    <span>الصفحة لسه مش مربوطة بالفورم — الحساب شغال بس الإرسال لأ.</span>
-    <button id="bannerBtn">اربطها</button>
-  </div>
-
   <section class="card unit">
     <label class="field req"><span>اسم الوحدة الصحية</span><input id="unit" autocomplete="organization" placeholder="مثلاً: وحدة البجلات"></label>
-    <label class="field"><span>اسم القائم بالبيان</span><input id="person" autocomplete="name" placeholder="اختياري"></label>
+    <label class="field req"><span>اسم القائم بالبيان</span><input id="person" autocomplete="name" placeholder="الاسم بالكامل"></label>
   </section>
 
   <section class="card stats">
@@ -217,6 +210,12 @@
 
   <div id="list" class="list"></div>
   <div id="emptyState" class="empty-state">مفيش أصناف بالشكل ده</div>
+
+  <section class="card notes">
+    <label class="field"><span>نواقص أخرى أو ملاحظات</span>
+      <textarea id="notes" rows="4" placeholder="أي صنف ناقص مش في القايمة مع الكمية المطلوبة، أو أي ملاحظات…"></textarea>
+    </label>
+  </section>
 </main>
 
 <footer class="bar">
@@ -228,26 +227,6 @@
     </button>
   </div>
 </footer>
-
-<!-- settings -->
-<div id="settings" class="overlay">
-  <div class="sheet">
-    <h2>ربط الصفحة بالفورم</h2>
-    <p class="sub">الصق "كود الربط" اللي طالع من السكريبت (موجود في شيت "كود الربط"). بتعملها مرة واحدة بس.</p>
-    <textarea id="cfgInput" placeholder="eyJ2IjoxLCJ1cmwiOi..."></textarea>
-    <div class="row">
-      <button id="saveCfg" class="btn primary">حفظ الربط</button>
-      <button id="exportBtn" class="btn pink">تنزيل نسخة جاهزة للوحدات</button>
-    </div>
-    <div id="cfgStatus" class="status-line"></div>
-    <div class="hr"></div>
-    <div class="row">
-      <button id="flushBtn" class="btn ghost">إعادة إرسال المحفوظ</button>
-      <button id="clearBtn" class="btn ghost">مسح الأرقام المكتوبة</button>
-      <button id="closeSettings" class="btn ghost">إغلاق</button>
-    </div>
-  </div>
-</div>
 
 <!-- done -->
 <div id="done" class="overlay">
@@ -274,9 +253,6 @@
 <script>
 (function () {
   'use strict';
-  // نسخة من الصفحة الأصلية قبل أي تعديل (عشان "تنزيل نسخة جاهزة للوحدات")
-  var SOURCE = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-
   var ITEMS = [
     'كانيولا ٢٤','كانيولا ٢٢','كانيولا ١٨','جوانتي لاتكس','خافض لسان','رول تعقيم ٧.٥','رول تعقيم ١٥','سايدكس',
     'ورق كريب ٩٠','ورق كريب ٥٠','ماسك نيوبلايزر كبار','ماسك نيوبلايزر اطفال','قطن طبي ١٠٠','قطن طبي ٢٥٠',
@@ -287,7 +263,7 @@
     'صندوق امان بلاستيك ١٢ لتر','كحول إيثيلي'
   ];
   var N = ITEMS.length;
-  var K = { draft: 'mn_draft_v1', outbox: 'mn_outbox_v1', cfg: 'mn_cfg_v1' };
+  var K = { draft: 'mn_draft_v1', outbox: 'mn_outbox_v1' };
 
   /* ---------- storage ---------- */
   function load(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
@@ -295,9 +271,8 @@
 
   var cfg = null;
   try { cfg = JSON.parse(document.getElementById('cfg').textContent); } catch (e) {}
-  if (!cfg) cfg = load(K.cfg, null);
 
-  var draft = load(K.draft, null) || { unit: '', person: '', vals: [] };
+  var draft = load(K.draft, null) || { unit: '', person: '', notes: '', vals: [] };
   var vals = [];
   for (var i = 0; i < N; i++) vals.push((draft.vals && draft.vals[i]) || { b: '', n: '' });
 
@@ -324,7 +299,7 @@
   var LABEL = { empty: 'ناقص', none: 'لا يوجد احتياج', crit: 'حرج', mid: 'يحتاج صرف', ok: 'كافٍ' };
   var toastT;
   function toast(msg) { var t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('show'); }, 2600); }
-  function persist() { save(K.draft, { unit: $('unit').value, person: $('person').value, vals: vals }); }
+  function persist() { save(K.draft, { unit: $('unit').value, person: $('person').value, notes: $('notes').value, vals: vals }); }
 
   /* ---------- render ---------- */
   var list = $('list'), cards = [];
@@ -404,8 +379,8 @@
   });
   list.addEventListener('focusin', function (e) { if (e.target.tagName === 'INPUT') setTimeout(function () { e.target.select(); }, 0); });
 
-  $('unit').value = draft.unit || ''; $('person').value = draft.person || '';
-  $('unit').addEventListener('input', persist); $('person').addEventListener('input', persist);
+  $('unit').value = draft.unit || ''; $('person').value = draft.person || ''; $('notes').value = draft.notes || '';
+  $('unit').addEventListener('input', persist); $('person').addEventListener('input', persist); $('notes').addEventListener('input', persist);
   $('q').addEventListener('input', refresh);
   $('chips').addEventListener('click', function (e) {
     var b = e.target.closest('.chip'); if (!b) return;
@@ -436,6 +411,7 @@
     var p = new URLSearchParams();
     p.append('entry.' + cfg.u, rec.unit);
     if (cfg.p) p.append('entry.' + cfg.p, rec.person || '');
+    if (cfg.x && rec.notes) p.append('entry.' + cfg.x, rec.notes);
     rec.vals.forEach(function (v, i) {
       p.append('entry.' + cfg.b[i], String(v.b));
       p.append('entry.' + cfg.n[i], String(v.n));
@@ -467,6 +443,8 @@
   $('sendBtn').addEventListener('click', function () {
     var unit = $('unit').value.trim();
     if (!unit) { $('unit').focus(); toast('اكتب اسم الوحدة الأول'); return; }
+    var person = $('person').value.trim();
+    if (!person) { $('person').focus(); toast('اكتب اسم القائم بالبيان'); return; }
     var miss = vals.map(function (v, i) { return calc(v).st === 'empty' ? i : -1; }).filter(function (i) { return i > -1; });
     if (miss.length) {
       filter = 'all'; $('q').value = '';
@@ -474,13 +452,13 @@
       refresh();
       miss.forEach(function (i) { var el = cards[i].el; el.classList.remove('missing'); void el.offsetWidth; el.classList.add('missing'); });
       cards[miss[0]].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      toast('فاضل ' + ar(miss.length, 0) + ' صنف — اكتب الرقم أو دوس "٠ للفاضي"');
+      toast('فاضل ' + ar(miss.length, 0) + ' صنف — اكتب الرقم أو دوس "صفر للفاضي"');
       return;
     }
-    if (!cfg) { openSettings(); toast('لازم تربط الصفحة بالفورم الأول'); return; }
+    if (!cfg) { toast('الصفحة مش مربوطة بالفورم — كلّم مسؤول المستلزمات'); return; }
 
     var rec = { id: Date.now() + '-' + Math.random().toString(36).slice(2, 7), at: new Date().toISOString(),
-      unit: unit, person: $('person').value.trim(), vals: vals.map(function (v) { return { b: parseFloat(v.b) || 0, n: parseFloat(v.n) || 0 }; }) };
+      unit: unit, person: person, notes: $('notes').value.trim(), vals: vals.map(function (v) { return { b: parseFloat(v.b) || 0, n: parseFloat(v.n) || 0 }; }) };
     var box = outbox(); box.push(rec); save(K.outbox, box); setNet();
     showDone(rec, 'sending');
     flush().then(function (ok) { showDone(rec, ok && !outbox().some(function (r) { return r.id === rec.id; }) ? 'sent' : 'queued'); });
@@ -504,12 +482,20 @@
     $('dList').innerHTML = html;
     var spans = $('dList').querySelectorAll('.rrow > span');
     need.forEach(function (r, k) { spans[k].textContent = r.name; });
+    if (rec.notes) {
+      var nr = document.createElement('div'); nr.className = 'rrow note';
+      var nt = document.createElement('small'); nt.textContent = 'نواقص أخرى / ملاحظات';
+      var nb = document.createElement('span'); nb.textContent = rec.notes;
+      nr.appendChild(nt); nr.appendChild(nb); $('dList').appendChild(nr);
+    }
 
     var d = new Date(rec.at);
     var txt = 'بيان المستلزمات — ' + rec.unit + '\n' + d.toLocaleDateString('ar-EG') + '\n';
     if (crit.length) { txt += '\n🔴 حرج (أقل من شهر):\n'; crit.sort(function (a, b) { return a.s - b.s; }).forEach(function (r) { txt += '• ' + r.name + ': يكفي ' + suffTxt(r.s) + ' — المطلوب ' + ar(r.need) + '\n'; }); }
     if (mid.length) { txt += '\n🟡 يحتاج صرف (أقل من ٣ شهور):\n'; mid.sort(function (a, b) { return a.s - b.s; }).forEach(function (r) { txt += '• ' + r.name + ': يكفي ' + ar(r.s) + ' شهر — المطلوب ' + ar(r.need) + '\n'; }); }
     txt += '\n🟢 كافٍ: ' + ar(ok.length, 0) + ' صنف';
+    if (rec.notes) txt += '\n\n📝 نواقص أخرى / ملاحظات:\n' + rec.notes;
+    if (rec.person) txt += '\n\nالقائم بالبيان: ' + rec.person;
     lastSummary = txt;
     $('done').classList.add('show');
   }
@@ -522,48 +508,10 @@
     vals.forEach(function (v, i) { v.b = ''; v.n = ''; var ins = cards[i].el.querySelectorAll('input'); ins[0].value = ''; ins[1].value = ''; updateCard(i); });
     refresh(); persist();
   }
-  $('newBtn').addEventListener('click', function () { $('done').classList.remove('show'); clearVals(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  $('newBtn').addEventListener('click', function () { $('done').classList.remove('show'); $('notes').value = ''; clearVals(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
   $('done').addEventListener('click', function (e) { if (e.target === $('done')) $('done').classList.remove('show'); });
 
-  /* ---------- settings ---------- */
-  function cfgOk(c) { return c && c.url && c.u && c.b && c.n && c.b.length === N && c.n.length === N; }
-  function renderCfg() {
-    $('banner').classList.toggle('show', !cfg);
-    $('cfgStatus').innerHTML = cfg
-      ? '✅ مربوطة بالفورم — ' + ar(N, 0) + ' صنف' + (outbox().length ? ' · ' + ar(outbox().length, 0) + ' بيان مستني الإرسال' : '')
-      : '⚠️ لسه مش مربوطة';
-    $('exportBtn').disabled = !cfg;
-  }
-  function openSettings() { renderCfg(); $('settings').classList.add('show'); }
-  $('gear').addEventListener('click', openSettings);
-  $('bannerBtn').addEventListener('click', openSettings);
-  $('closeSettings').addEventListener('click', function () { $('settings').classList.remove('show'); });
-  $('settings').addEventListener('click', function (e) { if (e.target === $('settings')) $('settings').classList.remove('show'); });
-  $('saveCfg').addEventListener('click', function () {
-    var raw = $('cfgInput').value.replace(/\s+/g, '');
-    var c = null;
-    try { c = JSON.parse(atob(raw)); } catch (e) {}
-    if (!cfgOk(c)) { toast('الكود مش صح — انسخه كله من شيت "كود الربط"'); return; }
-    cfg = c; save(K.cfg, cfg); renderCfg(); $('cfgInput').value = '';
-    toast('تم الربط ✓'); flush();
-  });
-  $('exportBtn').addEventListener('click', function () {
-    if (!cfg) return;
-    var html = SOURCE.replace(/(<script id="cfg" type="application\/json">)[\s\S]*?(<\/script>)/, '$1' + JSON.stringify(cfg) + '$2');
-    var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = 'بيان_المستلزمات_منية_النصر.html';
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
-    toast('اتنزلت — ابعت الملف ده للوحدات');
-  });
-  $('flushBtn').addEventListener('click', function () {
-    if (!outbox().length) { toast('مفيش بيانات مستنية'); return; }
-    flush().then(function (ok) { renderCfg(); if (!ok) toast('لسه مفيش نت'); });
-  });
-  $('clearBtn').addEventListener('click', function () { clearVals(); toast('اتمسحت الأرقام'); });
-
-  refresh(); setNet(); renderCfg(); flush();
+  refresh(); setNet(); flush();
 
   // يشتغل أوفلاين لما الصفحة تتفتح من الموقع (GitHub Pages)
   if ('serviceWorker' in navigator && location.protocol === 'https:') {

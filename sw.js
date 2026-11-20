@@ -1,5 +1,5 @@
 // بيخلّي الصفحة تفتح من غير نت بعد أول مرة
-const CACHE = 'bayan-v2';
+const CACHE = 'bayan-v3';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './icon-512-maskable.png'];
 
 self.addEventListener('install', (e) => {
